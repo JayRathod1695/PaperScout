@@ -7,6 +7,12 @@ from typing import Optional
 from openai import OpenAI, AsyncOpenAI  # Note: we need async client; OpenAI's default is sync but we can use AsyncOpenAI
 from utils.retry import retry_with_backoff
 
+#Use Base URL and API key from .env
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 logger = logging.getLogger(__name__)
 
 # ============================================================
@@ -15,10 +21,10 @@ logger = logging.getLogger(__name__)
 
 # Use AsyncOpenAI for async compatibility
 client = AsyncOpenAI(
-    base_url="https://integrate.api.nvidia.com/v1",
-    api_key="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",  # Replace with env var if needed
+    base_url=os.getenv("BASE_URL"),
+    api_key=os.getenv("NVIDIA_API_KEY"),  # Replace with env var if needed
 )
-
+    
 MODEL_NAME = "nvidia/nvidia-nemotron-nano-9b-v2"
 
 

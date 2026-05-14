@@ -9,6 +9,8 @@ class Settings(BaseSettings):
 
     # AI Model
     ai_model_api_key: str
+    nvidia_api_key: str = ""
+    base_url: str = ""
 
     # OpenAlex
     openalex_api_key: str = ""
